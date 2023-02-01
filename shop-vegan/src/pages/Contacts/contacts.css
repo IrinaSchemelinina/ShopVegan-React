@@ -1,0 +1,144 @@
+.contacts {
+    background-color: #F3FBF8;
+    padding: 30px 0;
+}
+
+.contacts .container img,
+.questions .container img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contacts .container .shop {
+    margin-top: 50px;
+}
+
+.contacts .container .shop .shop_block {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.contacts .container .shop .shop_block .shop_address {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 30px;
+    font-size: 16px;
+}
+
+.contacts .container .shop .shop_block .shop_address a {
+   text-decoration: none;
+   color: #222222;
+}
+
+.contacts .container .shop .shop_nav .btn_map { 
+    background-color: #09A66D;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 23px;
+    margin-left: 5px;
+}
+
+.contacts .container .shop .shop_nav .btn_map:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.contacts .container .shop .shop_nav .btn_map a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.contacts .container .shop .shop_nav .btn_chart { 
+    background-color: #09A66D;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 23px;
+    margin-left: 30px;
+}
+
+.contacts .container .shop .shop_nav .btn_chart:hover {
+    opacity: 0.9;
+    cursor: pointer;
+    color: #222222;
+}
+
+.contacts .popup_content {
+    max-width: 500px;
+}
+
+.contacts .popup_text table {
+    width: 400px;
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+
+.contacts .popup_text table th{
+    width: 150px;
+    font-size: 20px;
+    padding: 10px 0;
+    border: 1px solid grey;
+    background-color: #F3FBF8;
+}
+
+.contacts .popup_text table td {
+    font-size: 18px;
+    border: 1px solid grey;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.questions {
+    padding: 30px 0;
+}
+
+.questions_accordion-wrapper {
+    width: 600px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.questions .questions_accordion-wrapper .accordion-item{
+    position: relative;
+    border-bottom: 3px solid transparent;
+}
+
+.questions .questions_accordion-wrapper .accordion-item-title{
+    padding: 10px;
+    background-color: #09A66D;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+}
+
+.questions .questions_accordion-wrapper .accordion-item-title::before{
+    content: "+";
+    position: absolute;
+    top:50%;
+    transform: translate(0, -50%);
+    right: 20px;
+    font-size: 24px;
+}
+
+.questions .questions_accordion-wrapper .accordion-item-content{
+    position: relative;
+    background-color: #F3FBF8;
+    color: #222222;
+    line-height: 30px;
+    padding-left: 10px;
+    height: 0;
+    overflow: hidden;
+    transition: .5s ease-in-out;
+}
+
+.questions .accordion-item.active .accordion-item-content{
+    height: 100px;
+}
+
+.questions .accordion-item.active .accordion-item-title::before{
+    content: "-";
+}

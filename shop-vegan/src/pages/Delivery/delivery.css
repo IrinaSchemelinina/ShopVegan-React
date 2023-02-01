@@ -1,0 +1,133 @@
+.dekivery {
+    background-color: #F3FBF8;
+    padding: 30px 0; 
+}
+
+.payment {
+    padding: 30px 0; 
+}
+
+.dekivery .container .leaf,
+.payment .container .leaf {
+    display: block;
+    margin: 15px auto;
+}
+
+.dekivery .container .info {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.dekivery .container .dekivery_block {
+    border: 1px solid #999d9e;
+    border-radius: 5px;
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.dekivery .container .dekivery_block .dekivery_content {
+    width: 60%;
+    padding: 10px 20px;
+}
+
+.dekivery .container .dekivery_block .dekivery_content h3 {
+    margin: 10px 0;
+}
+
+.dekivery .container .dekivery_block .dekivery_content h4 {
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.dekivery .container .dekivery_block .dekivery_content ul {
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+
+
+.dekivery .container .dekivery_block .dekivery_image {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+}
+
+.dekivery .container .dekivery_block .dekivery_image img {
+    width: 100%;
+}
+
+.dekivery .container .dekivery_block p {
+    padding-bottom: 10px;
+}
+
+.dekivery .container .dekivery_block a {
+    text-decoration: none;
+    color: #09A66D;
+}
+
+.payment .container .payment_info {
+    text-align: center;
+}
+
+.payment .container .payment_types{
+    display: flex;
+    margin-top: 30px;
+}
+
+.payment .container .payment_types .block {
+    display: flex;
+    width: 50%;
+}
+
+.payment .container .payment_types .block .payment_block {
+    width: 50%;
+}
+
+.payment .container .payment_block p {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.payment .container .payment_types .payment_block .payment_image {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #09A66D;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.payment .container .payment_types .payment_block .payment_image img {
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+}
+
+.payment .container .payment_manual {
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.payment .container .payment_manual ol {
+    margin-top: 15px;
+    padding-left: 10px;
+}
+
+.payment .container .payment_manual p {
+    margin-top: 10px;
+}
+
+.payment .container .payment_manual .attention {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.payment .container .payment_manual img {
+    margin-top: 20px;
+}

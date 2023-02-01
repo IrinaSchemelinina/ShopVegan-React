@@ -1,0 +1,106 @@
+.registration {
+    margin: 50px 0;
+}
+
+.icon {
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.icon-btn {
+    width: 270px;
+    border: 3px solid #09A66D;
+    background: transparent;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.icon-btn img {
+    width: 150px;
+}
+
+.icon-btn p {
+    color: #09A66D;
+    font-size: 40px;
+    margin-top: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+.signup {
+    padding: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label,
+.checkbox-block {
+    margin: 10px 5px;
+}
+
+.form-control {
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #F3FBF8;
+}
+
+input:focus {
+    outline: 0;
+    cursor: pointer;
+}
+
+.checkbox-block .checkbox {
+    margin: 10px 10px 10px 0;
+}
+
+.registration-btn {
+    width: 100%;
+    background-color: #09A66D;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.login-btn {
+    margin-top: 30px;
+}
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #09A66D;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
