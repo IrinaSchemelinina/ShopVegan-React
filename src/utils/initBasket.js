@@ -11,7 +11,7 @@ export const initBasket = () => {
 		buttonAddToBasket: 'product_btn',
 		productPrice: 'product-price_current',
 		productSize: 'product__size-element',
-		productQuantityWrapper: 'product__quantity',
+		// productQuantityWrapper: 'product__quantity',
 		smartBasketMinArea: 'cart',
 		countryCode: '+375',
 		smartBasketCurrency: 'Br',

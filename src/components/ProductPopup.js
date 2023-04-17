@@ -23,7 +23,6 @@ export default function ProductPopup ({
 
       <div className="popup_card-price">
           <div className="product-price_current">{price} p.</div>
-          <div className="product__quantity"></div>
           <button className="product_btn btn" 
               data-sb-id-or-vendor-code={vendor}
               data-sb-product-name={title}

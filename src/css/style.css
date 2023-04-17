@@ -15,7 +15,7 @@ body {
 body {
   font-family: "DM Sans", sans-serif;
   font-size: 18px;
-  line-height: 1.2;
+  line-height: 1.3;
   color: #555555;
 }
 
@@ -125,6 +125,10 @@ header .header_inner .menu-burger img {
   color: #09a66d;
 }
 
+.submenu_list-link:hover, .submenu_list-link.active {
+  font-weight: 700;
+}
+
 header .header_inner .menu {
   display: flex;
 }
@@ -145,7 +149,7 @@ header .header_inner .menu_list > li {
   position: relative;
 }
 
-header .header_inner .menu_list > li:hover .submenu_list {
+header .header_inner .menu_list .menu_list-item:hover .submenu_list {
   display: block;
 }
 
@@ -184,7 +188,7 @@ header .header_inner .menu_list .menu_arrow {
   width: 20px;
 }
 
-header .header_inner .menu_list .menu_arrow:hover {
+header .header_inner .menu_list .menu_list-item:hover .menu_arrow {
   transform: rotate(180deg);
   transition: 0.2s;
 }
@@ -282,7 +286,6 @@ header .header_inner .menu .account img {
 
 .main {
   background-color: #f3fbf8;
-  padding-top: 20px;
   padding-bottom: 10px;
 }
 
@@ -571,5 +574,6 @@ mark {
   background-color: #09a66d;
   border: 1px solid #09a66d;
   color: #fff;
+  margin-bottom: 20px;
   padding: 10px 20px;
 }

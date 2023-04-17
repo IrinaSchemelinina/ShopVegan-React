@@ -34,11 +34,7 @@ export default function ContactsSection() {
 
           <div className="shop_nav">
             <button className="btn_map">
-              <a
-                href="https://yandex.ru/maps/?um=constructor%3A3263bccad95543fb345f13383f4591f017f118288dcea89e31e6eb7c35f90753&source=constructorLink"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="#map">
                 Мы здесь на карте
               </a>
             </button>
@@ -67,11 +63,7 @@ export default function ContactsSection() {
 
           <div className="shop_nav">
             <button className="btn_map">
-              <a
-                href="https://yandex.ru/maps/?um=constructor%3A3263bccad95543fb345f13383f4591f017f118288dcea89e31e6eb7c35f90753&source=constructorLink"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="#map">
                 Мы здесь на карте
               </a>
             </button>
@@ -99,11 +91,7 @@ export default function ContactsSection() {
 
           <div className="shop_nav">
             <button className="btn_map">
-              <a
-                href="https://yandex.ru/maps/?um=constructor%3A3d548cfa6de398cc9971abf0441634dfbfb558cc5f4692711624726f274a04cd&source=constructorLink"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="#map">
                 Мы здесь на карте
               </a>
             </button>
@@ -151,6 +139,18 @@ export default function ContactsSection() {
             </tbody>
           </table>
           <p>*Время указано для региона: Беларусь, Минск</p>
+        </Popup>
+        <Popup id="map">
+          <div className="popup-map">
+            <iframe
+              title="map"
+              src="https://yandex.by/map-widget/v1/?ll=27.629939%2C53.874520&mode=usermaps&source=constructorLink&um=constructor%3A3263bccad95543fb345f13383f4591f017f118288dcea89e31e6eb7c35f90753&z=19"
+              width="560"
+              height="400"
+              frameBorder="1"
+              allowFullScreen={true}
+            />
+          </div>
         </Popup>
       </div>
     </div>

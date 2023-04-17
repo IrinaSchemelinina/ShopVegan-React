@@ -22,7 +22,7 @@ export default function Signup () {
       return
     }
     const user = getUsersFromLocalStorage(inputValues.email)
-    if (user && user[0].email === inputValues.email) {
+    if (user && user[0]?.email === inputValues.email) {
       alert("Такой пользователь уже существует")
       return
     }

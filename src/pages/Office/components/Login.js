@@ -19,7 +19,7 @@ export default function Login () {
       return
     }
     const user = getUsersFromLocalStorage(inputValues.email)
-    if (!user.length) {
+    if (!user?.length) {
       alert("Такого пользователя не существует")
       return
     }

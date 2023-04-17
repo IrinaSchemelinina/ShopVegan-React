@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useMemo, useState, useRef } from "react"
 import Pagination from "../../components/Pagination"
 import ProductItem from "../../components/ProductItem"
 import ProductPopup from "../../components/ProductPopup"
@@ -9,20 +9,28 @@ import Search from "./components/Search"
 const perPage = 9
 
 export default function Products({ name, title }) {
-  const initialProducts =
-    name === "products" ? productData : productData.filter((item) => item.category === name)
+  const initialProducts = useMemo(() => {
+    return name === "products" ? productData : productData.filter((item) => item.category === name)
+  }, [name])
 
   const [currentPage, setCurrentPage] = useState(1)
   const [productList, setProductList] = useState(initialProducts)
   const [showFrom, setShowFrom] = useState(0)
   const [showTo, setShowTo] = useState(perPage)
   const numPages = Math.ceil(productList.length / perPage)
+  const titleRef = useRef(null)
+
+  useEffect(() => {
+    setProductList(initialProducts)
+    onPageClick(1)
+  }, [initialProducts])
 
   const onPageClick = (pageNumber) => {
     const newShowFrom = perPage * (pageNumber - 1)
     setShowFrom(newShowFrom)
     setShowTo(newShowFrom + perPage)
     setCurrentPage(pageNumber)
+    titleRef.current.scrollIntoView({ behavior: "smooth" })
   }
 
   const onSearch = (productData) => {
@@ -35,7 +43,7 @@ export default function Products({ name, title }) {
   return (
     <div className="pagination_products">
       <div className="container">
-        <Title tag="h1">{title}</Title>
+        <Title tag="h1" forwardRef={titleRef}>{title}</Title>
         <Search productData={initialProducts} onSearch={onSearch} />
         <div className="products-content grid-container">
           <div className="products-grid" id="results">

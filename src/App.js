@@ -7,6 +7,7 @@ import Contacts from './pages/Contacts'
 import Delivery from './pages/Delivery'
 import Office from './pages/Office'
 import Home from './pages/Home'
+import Product from './pages/Product'
 import Products from './pages/Products'
 import { categoryData } from './config/categoryData'
 
@@ -23,6 +24,7 @@ function App() {
         <Route path='/delivery' element={<Delivery />} />
         <Route path='/office' element={<Office />} />
         <Route path='/cabinet' element={<Cabinet />} />
+        <Route path='/product/:productId' element={<Product />} />
         {categoryData.map((category) => {
           const { id, url } = category
           return (

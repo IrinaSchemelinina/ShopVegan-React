@@ -24,9 +24,9 @@ export const setUsersInLocalStorage = (data) => {
 export const setLoginnedUserToLocalStorage = email =>
   localStorage.setItem(localStorageLoginnedUserKey, email)
 
-export const checkIsLoginned = () =>
+export const checkLoginnedUser = () =>
   localStorage.getItem(localStorageLoginnedUserKey)
 
-export const checkLoginnedUserToLocalStorage = email => checkIsLoginned() === email
+export const checkLoginnedUserToLocalStorage = email => checkLoginnedUser() === email
 
 export const logout = () => localStorage.removeItem(localStorageLoginnedUserKey)

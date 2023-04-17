@@ -52,11 +52,6 @@ a {
     height: auto;
 }
 
-.product__quantity {
-    height: 30px;
-    margin-bottom: 15px;
-}
-
 .product_title {
     margin: 8px 0;
     width: 100%;
@@ -64,6 +59,10 @@ a {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
+}
+
+.product_title a:hover {
+    text-decoration: underline;
 }
 
 .product_rating {
@@ -88,12 +87,12 @@ a {
 }
 
 .product-price_current {
-    margin-right: 12px;
     font-size: 24px;
     color: #222222;
 }
 
 .product-price_old {
+    margin-left: 12px;
     text-decoration: line-through;
     font-size: 18px;
 }
@@ -160,11 +159,12 @@ ul {
     width: 40%;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    padding-right: 10px;
 }
 
 .popup_card-image img {
-    width: 70%;
+    width: 100%;
 }
 
 .popup_card-description {

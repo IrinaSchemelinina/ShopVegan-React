@@ -1,7 +1,7 @@
-import React, { useLayoutEffect, useState } from "react"
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
 import { categoryData } from "../config/categoryData"
-import { checkIsLoginned} from "../utils"
+import { checkLoginnedUser} from "../utils"
 import { initBasket } from "../utils/initBasket"
 
 import "./smartbasket.min.css"
@@ -17,6 +17,13 @@ export default function Header() {
   const { pathname } = useLocation()
   const [showMenu, setShowMenu] = useState(false)
   const [fixed, setFixed] = useState(false)
+  const menuListRef = useRef(null)
+  const burgerRef = useRef(null)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  
 
   useLayoutEffect(() => {
     initBasket()
@@ -46,20 +53,40 @@ export default function Header() {
     setShowMenu((prevState) => !prevState)
   }
 
+  const closeMenu = useCallback(
+    (e) => {
+      if (
+        showMenu && 
+        !burgerRef.current.contains(e.target) &&
+        !menuListRef.current.contains(e.target)
+      ) {
+        setShowMenu(false)
+      }
+    },
+    [showMenu],
+  )
+
+  useEffect(() => {
+    document.addEventListener("click", closeMenu)
+    return () => {
+      document.removeEventListener("click", closeMenu)
+    }
+  }, [closeMenu])
+
   const mainCategory = categoryData.filter(item => (item.name === "products"))[0]
   const { title, url } = mainCategory
   const subCategoryList = categoryData.filter(item => (item.name !== "products"))
-  const isLoginned = checkIsLoginned()
+  const isLoginned = checkLoginnedUser()
 
   return (
     <header className={`header ${fixed ? "header_fixed" : ""}`}>
       <div className="container">
         <div className="header_inner">
-          <button onClick={toggleShowMenu} className="menu-burger">
+          <button onClick={toggleShowMenu} className="menu-burger" ref={burgerRef}>
             <img src={menuImg} alt="" />
           </button>
           <nav className="menu">
-            <ul className={`menu_list ${showMenu ? "show-menu" : ""}`}>
+            <ul className={`menu_list ${showMenu ? "show-menu" : ""}`} ref={menuListRef}>
               <li className="menu_list-item">
                 <NavLink className="menu_list-link" to={url}>
                   {title}

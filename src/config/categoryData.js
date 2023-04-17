@@ -18,9 +18,15 @@ export const categoryData = [
     url: "/flour",
   },
   {
-    id: 4,
+    id: 5,
     name: "oils",
     title: "Масла",
     url: "/oils",
+  },
+  {
+    id: 4,
+    name: "stocks",
+    title: "Скидки",
+    url: "/stocks",
   },
 ]

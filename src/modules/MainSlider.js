@@ -21,36 +21,34 @@ export default function MainSlider() {
 
   return (
     <main className="main">
-      <div className="container">
-        <div className="slider">
-          <Slider {...settings}>
-            <div className="slider_item">
-              <a href="/">
-                <img src={slide1Image} alt="banner" />
-              </a>
-            </div>
-            <div className="slider_item">
-              <NavLink to="/sweets">
-                <img src={slide2Image} alt="banner" />
-              </NavLink>
-            </div>
-            <div className="slider_item">
-              <NavLink to="/sweets">
-                <img src={slide3Image} alt="banner" />
-              </NavLink>
-            </div>
-            <div className="slider_item">
-              <NavLink to="/sweets">
-                <img src={slide4Image} alt="banner" />
-              </NavLink>
-            </div>
-            <div className="slider_item">
-              <NavLink to="/sweets">
-                <img src={slide5Image} alt="banner" />
-              </NavLink>
-            </div>
-          </Slider>
-        </div>
+      <div className="slider">
+        <Slider {...settings}>
+          <div className="slider_item">
+            <a href="/products">
+              <img src={slide1Image} alt="banner" />
+            </a>
+          </div>
+          <div className="slider_item">
+            <NavLink to="/sweets">
+              <img src={slide2Image} alt="banner" />
+            </NavLink>
+          </div>
+          <div className="slider_item">
+            <NavLink to="/sweets">
+              <img src={slide3Image} alt="banner" />
+            </NavLink>
+          </div>
+          <div className="slider_item">
+            <NavLink to="/sweets">
+              <img src={slide4Image} alt="banner" />
+            </NavLink>
+          </div>
+          <div className="slider_item">
+            <NavLink to="/sweets">
+              <img src={slide5Image} alt="banner" />
+            </NavLink>
+          </div>
+        </Slider>
       </div>
     </main>
   )
