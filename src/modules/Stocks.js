@@ -10,8 +10,8 @@ export default function Stocks () {
   return (
     <div className="stocks">
       <div className="container">
-          <Title>Акционные товары</Title>
-          <SliderProducts config={products} />
+        <Title>Акционные товары</Title>
+        <SliderProducts config={products} />
       </div>
   </div>
   )

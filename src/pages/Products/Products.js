@@ -1,14 +1,15 @@
-import React, { useEffect, useMemo, useState, useRef } from "react"
+import React, { useEffect, useMemo, useState, useRef, useContext, memo } from "react"
 import Pagination from "../../components/Pagination"
 import ProductItem from "../../components/ProductItem"
 import ProductPopup from "../../components/ProductPopup"
 import Title from "../../components/Title"
 import { productData } from "../../config/productData"
 import Search from "./components/Search"
+import { CartContext } from "../../context/CartContext"
 
 const perPage = 9
 
-export default function Products({ name, title }) {
+export function Products({ name, title }) {
   const initialProducts = useMemo(() => {
     return name === "products" ? productData : productData.filter((item) => item.category === name)
   }, [name])
@@ -19,6 +20,8 @@ export default function Products({ name, title }) {
   const [showTo, setShowTo] = useState(perPage)
   const numPages = Math.ceil(productList.length / perPage)
   const titleRef = useRef(null)
+  const { productIdsInCart, addToCart, removeFromCart } = useContext(CartContext)
+  const productListtoShow = useMemo(() => productList.slice(showFrom, showTo), [productList, showFrom, showTo])
 
   useEffect(() => {
     setProductList(initialProducts)
@@ -38,8 +41,6 @@ export default function Products({ name, title }) {
     setProductList(productData)
   }
 
-  const productListtoShow = productList.slice(showFrom, showTo)
-
   return (
     <div className="pagination_products">
       <div className="container">
@@ -48,7 +49,13 @@ export default function Products({ name, title }) {
         <div className="products-content grid-container">
           <div className="products-grid" id="results">
             {productListtoShow.map((item) => (
-              <ProductItem key={item.title} {...item} />
+              <ProductItem
+                key={item.title}
+                {...item}
+                inCart={productIdsInCart.includes(item.id)}
+                addToCart={addToCart}
+                removeFromCart={removeFromCart}
+              />
             ))}
           </div>
         </div>
@@ -62,8 +69,16 @@ export default function Products({ name, title }) {
         )}
       </div>
       {productListtoShow.map((item) => (
-        <ProductPopup key={item.title} {...item} />
+        <ProductPopup
+          key={item.title}
+          {...item}
+          inCart={productIdsInCart.includes(item.id)}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+        />
       ))}
     </div>
   )
 }
+
+export default memo(Products)

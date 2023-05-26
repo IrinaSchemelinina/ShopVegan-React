@@ -246,17 +246,22 @@ header .header_inner .menu .cart {
   align-items: center;
   justify-content: center;
   position: relative;
+  cursor: pointer;
 }
 
 .cart-numbers {
   position: absolute;
   top: 0px;
   right: -11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 20px;
   height: 20px;
   background-color: #09a66d;
   border-radius: 50%;
   color: #fff;
+  font-size: 12px;
 }
 
 header .header_inner .menu .cart img {

@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
 import { categoryData } from "../config/categoryData"
 import { checkLoginnedUser} from "../utils"
-import { initBasket } from "../utils/initBasket"
+import { CartContext } from "../context/CartContext"
 
-import "./smartbasket.min.css"
+import "./Basket/smartbasket.min.css"
 
 import menuImg from "../images/menu.png"
 import arrowImg from "../images/arrow.png"
@@ -22,15 +22,6 @@ export default function Header() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [pathname])
-  
-
-  useLayoutEffect(() => {
-    initBasket()
-    return () => {
-      [...document.getElementsByClassName("smart-basket__min")].forEach(i => i.remove())
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
   useLayoutEffect(() => {
@@ -77,6 +68,8 @@ export default function Header() {
   const { title, url } = mainCategory
   const subCategoryList = categoryData.filter(item => (item.name !== "products"))
   const isLoginned = checkLoginnedUser()
+  const { productIdsInCart, goToCart } = useContext(CartContext)
+  const cartItems = productIdsInCart.length
 
   return (
     <header className={`header ${fixed ? "header_fixed" : ""}`}>
@@ -128,9 +121,13 @@ export default function Header() {
           </Link>
 
           <nav className="menu">
-            <span className="cart">
+            <span
+              className="cart"
+              role="none"
+              onClick={cartItems ? goToCart : undefined}
+            >
               <img src={cartImg} alt="" />
-              <div className="cart-numbers" />
+              <div className="cart-numbers">{cartItems}</div>
             </span>
             <NavLink to={isLoginned ? "/cabinet" : "/office"}>
               <button className="account">

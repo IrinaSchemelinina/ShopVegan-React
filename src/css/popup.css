@@ -12,7 +12,8 @@
   z-index: 30;
 }
 
-.popup:target {
+.popup:target,
+.popup.show {
   opacity: 1;
   visibility: visible;
 }
@@ -47,6 +48,9 @@
 
 .popup_text {
   padding: 40px 50px;
+}
+.popup_text.noPadding {
+  padding: 0;
 }
 
 .popup_text p {

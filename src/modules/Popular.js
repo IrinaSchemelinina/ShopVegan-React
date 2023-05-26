@@ -1,9 +1,9 @@
-import React from "react"
+import React, { memo } from "react"
 import SliderProducts from "../components/SliderProducts"
 import Title from "../components/Title"
 import { productData } from "../config/productData"
 
-export default function Popular() {
+export function Popular() {
   const products = productData.filter(item => (item.category === "popular"))
 
   return (
@@ -15,3 +15,5 @@ export default function Popular() {
     </div>
   )
 }
+
+export default memo(Popular)

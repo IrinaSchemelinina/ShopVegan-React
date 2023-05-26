@@ -59,6 +59,10 @@
   padding-left: 15px;
 }
 
+.product-page_btn.active {
+  background-color: #aeef19;
+}
+
 @media (max-width: 767px) {
   .product-page_content {
     flex-direction: column;

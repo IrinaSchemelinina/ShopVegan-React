@@ -1,22 +1,40 @@
-import React, { useMemo } from "react"
+import React, { useMemo, useContext, useCallback } from "react"
 import { useParams } from "react-router-dom"
 import Title from "../../components/Title"
+import { CartContext } from "../../context/CartContext"
 import { productData } from "../../config/productData"
 
 import "./product.css"
 
 export default function Product() {
   const { productId } = useParams()
+
   const {
+    id,
     image,
     title,
     price,
     text,
     priceOld,
-    vendor,
   } = useMemo(() => productData.find(item => item.id === Number(productId) | {}), [productId])
 
   const goBack = () => window.history.back()
+  const { productIdsInCart, addToCart, removeFromCart } = useContext(CartContext)
+  const inCart = productIdsInCart.includes(id)
+
+  const handleAddToCart = useCallback(
+    () => {
+      addToCart(id)
+    },
+    [addToCart, id],
+  )
+
+  const handleRemoveFromCart = useCallback(
+    () => {
+      removeFromCart(id)
+    },
+    [removeFromCart, id],
+  )
 
   return (
     <div className="container product-page">
@@ -33,14 +51,10 @@ export default function Product() {
             </div>
             <div>
               <button
-                className="product-page_btn btn"
-                data-sb-id-or-vendor-code={vendor}
-                data-sb-product-name={title}
-                data-sb-product-price={price}
-                data-sb-product-quantity="1"
-                data-sb-product-img={image}
+                className={`product-page_btn btn ${inCart ? "active" : ""}`}
+                onClick={inCart ? handleRemoveFromCart : handleAddToCart}
               >
-                Добавить в корзину
+                {inCart ? "В корзине" : "Добавить в корзину"}
               </button>
             </div>
             <button className="product-page_back" onClick={goBack}>Вернуться назад</button>

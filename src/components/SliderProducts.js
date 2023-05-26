@@ -1,9 +1,12 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useContext } from "react"
 import Slider from "react-slick"
 import ProductItem from "../components/ProductItem"
 import ProductPopup from "../components/ProductPopup"
+import { CartContext } from "../context/CartContext"
 
 export default function SliderProducts({ config }) {
+  const { productIdsInCart, addToCart, removeFromCart } = useContext(CartContext)
+
   const settings = {
     arrows: true,
     dots: false,
@@ -69,12 +72,24 @@ export default function SliderProducts({ config }) {
       <div className="slider_products">
         <Slider {...settings}>
           {config.map((item) => (
-            <ProductItem key={item.title} {...item} />
+            <ProductItem
+              key={item.title}
+              {...item}
+              inCart={productIdsInCart.includes(item.id)}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+            />
           ))}
         </Slider>
       </div>
       {config.map((item) => (
-        <ProductPopup key={item.title} {...item} />
+        <ProductPopup
+          key={item.title}
+          {...item}
+          inCart={productIdsInCart.includes(item.id)}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+        />
       ))}
     </Fragment>
   )

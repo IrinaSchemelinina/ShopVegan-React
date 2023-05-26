@@ -102,8 +102,12 @@ a {
 }
 
 .product_btn:hover {
-    background-color: #09A66D;
+    background-color: #77a609;
     transition: background-color 0.3s ease-in-out;
+}
+
+.product_btn.active {
+    background-color: #aeef19;
 }
 
 .container {
