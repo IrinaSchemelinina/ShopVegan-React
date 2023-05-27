@@ -20,7 +20,7 @@ export default function Product() {
 
   const goBack = () => window.history.back()
   const { productIdsInCart, addToCart, goToCart } = useContext(CartContext)
-  const inCart = productIdsInCart.includes(id)
+  const inCart = !!productIdsInCart[id]
 
   const handleAddToCart = useCallback(
     () => {

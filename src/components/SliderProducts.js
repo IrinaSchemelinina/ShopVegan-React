@@ -75,7 +75,7 @@ export default function SliderProducts({ config }) {
             <ProductItem
               key={item.title}
               {...item}
-              inCart={productIdsInCart.includes(item.id)}
+              inCart={!!productIdsInCart[item.id]}
               addToCart={addToCart}
               removeFromCart={removeFromCart}
             />
@@ -86,7 +86,7 @@ export default function SliderProducts({ config }) {
         <ProductPopup
           key={item.title}
           {...item}
-          inCart={productIdsInCart.includes(item.id)}
+          inCart={!!productIdsInCart[item.id]}
           addToCart={addToCart}
           removeFromCart={removeFromCart}
         />
