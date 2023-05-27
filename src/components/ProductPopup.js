@@ -10,16 +10,12 @@ export default function ProductPopup ({
   text,
   inCart,
   addToCart,
-  removeFromCart,
+  goToCart,
 }) {
   const idForProduct = "popup_products" + id
 
   const handleAddToCart = () => {
     addToCart(id)
-  }
-
-  const handleRemoveFromCart = () => {
-    removeFromCart(id)
   }
 
   return (
@@ -36,7 +32,7 @@ export default function ProductPopup ({
           <div className="product-price_current">{price} p.</div>
           <button
               className={`product_btn btn ${inCart ? "active" : ""}`}
-              onClick={inCart ? handleRemoveFromCart : handleAddToCart}
+              onClick={inCart ? goToCart : handleAddToCart}
             >
             {inCart ? "В корзине" : "Добавить в корзину"}
           </button>

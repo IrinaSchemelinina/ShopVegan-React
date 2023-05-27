@@ -152,7 +152,7 @@
 }
 
 .smart-basket__product-name {
-    width: 40%;
+    width: 30%;
     padding: 10px 0 10px 15px;
     display: -webkit-box;
     display: -webkit-flex;
@@ -296,7 +296,6 @@
     text-align: center;
     -webkit-appearance: none;
     -moz-appearance: textfield;
-    pointer-events: none;
     background: 0 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -497,7 +496,7 @@
 }
 
 .smart-basket__product-delete {
-    width: 20%;
+    width: 10%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;

@@ -1,7 +1,7 @@
 const localStorageCartItemsKey = "test_cart_data"
 
 export const getCartItems = () => {
-  const items: number[] = JSON.parse(localStorage.getItem(localStorageCartItemsKey))
+  const items = JSON.parse(localStorage.getItem(localStorageCartItemsKey))
   if (items) {
     return {
       success: true,
@@ -12,47 +12,62 @@ export const getCartItems = () => {
   return {
     success: false,
     message: "Корзина пуста",
-    items: [],
+    items: {},
   }
 }
 
-export const setItemToCart = (id) => {
+export const setItemToCart = (id, quantity = 1) => {
   const { items } = getCartItems()
 
-  if (items.includes(id)) {
-    return {
-      success: false,
-      message: "Товар уже добавлен в корзину",
-    }
-  }
+  items[id] = quantity
 
-  const updatedItems = [...items, id]
-
-  localStorage.setItem(localStorageCartItemsKey, JSON.stringify(updatedItems))
+  localStorage.setItem(localStorageCartItemsKey, JSON.stringify(items))
 
   return {
     success: true,
-    items: updatedItems,
+    items: items,
   }
 }
 
 export const removeItemFromCart = (id) => {
   const { items } = getCartItems()
 
-  if (!items.includes(id)) {
+  if (!items[id]) {
     return {
       success: false,
       message: "Товар не был добавлен в корзину",
     }
   }
 
-  const updatedItems = items.filter(i => i !== id)
+  const objectClone = { ...items }
 
-  localStorage.setItem(localStorageCartItemsKey, JSON.stringify(updatedItems))
+  delete objectClone[id]
+
+  localStorage.setItem(localStorageCartItemsKey, JSON.stringify(objectClone))
 
   return {
     success: true,
-    items: updatedItems,
+    items: objectClone,
+  }
+}
+
+export const changeQuantityOfCartItem = (id, quantity) => {
+  const { items } = getCartItems()
+
+  if (!items[id]) {
+    return {
+      success: false,
+      message: "Товар не был добавлен в корзину",
+    }
+  }
+
+  items[id] = quantity
+
+  setItemToCart(id, quantity)
+
+  return {
+    success: true,
+    items,
   }
 }
 
@@ -61,6 +76,6 @@ export const clearCart = () => {
 
   return {
     success: true,
-    items: [],
+    items: {},
   }
 }

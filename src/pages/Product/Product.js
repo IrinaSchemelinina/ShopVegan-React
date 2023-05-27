@@ -19,7 +19,7 @@ export default function Product() {
   } = useMemo(() => productData.find(item => item.id === Number(productId) | {}), [productId])
 
   const goBack = () => window.history.back()
-  const { productIdsInCart, addToCart, removeFromCart } = useContext(CartContext)
+  const { productIdsInCart, addToCart, goToCart } = useContext(CartContext)
   const inCart = productIdsInCart.includes(id)
 
   const handleAddToCart = useCallback(
@@ -27,13 +27,6 @@ export default function Product() {
       addToCart(id)
     },
     [addToCart, id],
-  )
-
-  const handleRemoveFromCart = useCallback(
-    () => {
-      removeFromCart(id)
-    },
-    [removeFromCart, id],
   )
 
   return (
@@ -52,7 +45,7 @@ export default function Product() {
             <div>
               <button
                 className={`product-page_btn btn ${inCart ? "active" : ""}`}
-                onClick={inCart ? handleRemoveFromCart : handleAddToCart}
+                onClick={inCart ? goToCart : handleAddToCart}
               >
                 {inCart ? "В корзине" : "Добавить в корзину"}
               </button>

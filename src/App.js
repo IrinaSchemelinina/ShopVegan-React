@@ -30,6 +30,7 @@ function App() {
     setShowCartPopup,
     goToCart,
     clearAllCart,
+    changeQuantityInCartItem,
   } = useCartUtils()
 
   const onGoToCart = () => {
@@ -77,6 +78,7 @@ function App() {
           onClose={() => setShowCartPopup(false)}
           onDelete={(id) => removeFromCart(id)}
           onClearCart={clearAllCart}
+          changeQuantityInCartItem={changeQuantityInCartItem}
         />
       </CartContext.Provider>
     </Router>

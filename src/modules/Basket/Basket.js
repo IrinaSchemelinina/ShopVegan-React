@@ -3,11 +3,11 @@ import { Link } from "react-router-dom"
 import Popup from "../../components/Popup";
 import { productData } from "../../config/productData"
 
-export default function BasketModal ({ itemIds, isShowPopup, onClose, onDelete, onClearCart }) {
+export default function BasketModal ({ itemIds, isShowPopup, onClose, onDelete, onClearCart, changeQuantityInCartItem }) {
   const [submitted, setSubmitted] = useState(false)
-  const products = productData.filter(item => itemIds.includes(item.id))
+  const products = productData.filter(item => itemIds[item.id])
   const fullPrice = products.reduce((acc, item) => {
-    return +item.price + acc
+    return +item.price * itemIds[item.id] + acc
   }, 0)
 
   const onSubmit = (e) => {
@@ -30,6 +30,7 @@ export default function BasketModal ({ itemIds, isShowPopup, onClose, onDelete, 
           <div className="smart-basket__product-name">Товар</div>
           <div className="smart-basket__product-id">ID</div>
           <div className="smart-basket__product-price">Цена / Br</div>
+          <div className="smart-basket__product-quantity">Количество</div>
           <div className="smart-basket__product-delete">Удалить</div>
         </div>
         {products.map(item => {
@@ -46,8 +47,13 @@ export default function BasketModal ({ itemIds, isShowPopup, onClose, onDelete, 
                 <input className="smart-basket__input" type="hidden" value={item.id} name="20[productId]" />
               </div>
               <div className="smart-basket__product-price">
-                {item.price}
-                <input className="smart-basket__input" type="hidden" name="20[productPrice]" value={item.price} />
+                {(+item.price * itemIds[item.id]).toFixed(2)}
+                <input className="smart-basket__input" type="hidden" name="20[productPrice]" value={(+item.price * itemIds[item.id]).toFixed(2)} />
+              </div>
+              <div className="smart-basket__product-quantity">
+                <button className="smart-basket__remove-item" onClick={() => changeQuantityInCartItem(item.id, "-")}>-</button>
+                <input className="smart-basket__product-quantity-state" type="number" min="1" step="1" pattern="^[0-9]" value={itemIds[item.id]} onChange={(e) => changeQuantityInCartItem(item.id, "", e.target.value)} />
+                <button className="smart-basket__add-item" onClick={() => changeQuantityInCartItem(item.id, "+")}>+</button>
               </div>
               <button className="smart-basket__product-delete" onClick={() => onDelete(item.id)}>
                 <span className="smart-basket__delete-icon">×</span>

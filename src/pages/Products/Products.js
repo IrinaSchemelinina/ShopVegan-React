@@ -20,7 +20,7 @@ export function Products({ name, title }) {
   const [showTo, setShowTo] = useState(perPage)
   const numPages = Math.ceil(productList.length / perPage)
   const titleRef = useRef(null)
-  const { productIdsInCart, addToCart, removeFromCart } = useContext(CartContext)
+  const { productIdsInCart, addToCart, goToCart } = useContext(CartContext)
   const productListtoShow = useMemo(() => productList.slice(showFrom, showTo), [productList, showFrom, showTo])
 
   useEffect(() => {
@@ -52,9 +52,9 @@ export function Products({ name, title }) {
               <ProductItem
                 key={item.title}
                 {...item}
-                inCart={productIdsInCart.includes(item.id)}
+                inCart={productIdsInCart[item.id]}
                 addToCart={addToCart}
-                removeFromCart={removeFromCart}
+                goToCart={goToCart}
               />
             ))}
           </div>
@@ -72,9 +72,9 @@ export function Products({ name, title }) {
         <ProductPopup
           key={item.title}
           {...item}
-          inCart={productIdsInCart.includes(item.id)}
+          inCart={productIdsInCart[item.id]}
           addToCart={addToCart}
-          removeFromCart={removeFromCart}
+          goToCart={goToCart}
         />
       ))}
     </div>

@@ -69,7 +69,7 @@ export default function Header() {
   const subCategoryList = categoryData.filter(item => (item.name !== "products"))
   const isLoginned = checkLoginnedUser()
   const { productIdsInCart, goToCart } = useContext(CartContext)
-  const cartItems = productIdsInCart.length
+  const cartItems = Object.keys(productIdsInCart).length
 
   return (
     <header className={`header ${fixed ? "header_fixed" : ""}`}>

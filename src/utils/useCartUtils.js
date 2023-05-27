@@ -1,5 +1,11 @@
 import { useCallback, useState } from "react"
-import { getCartItems, removeItemFromCart, setItemToCart, clearCart } from "./basketApi"
+import {
+  getCartItems,
+  removeItemFromCart,
+  setItemToCart,
+  clearCart,
+  changeQuantityOfCartItem,
+} from "./basketApi"
 
 export default function useCartUtils () {
   const [productIdsInCart, setProductIdsInCart] = useState(getCartItems().items)
@@ -49,6 +55,32 @@ export default function useCartUtils () {
     [],
   )
 
+  const changeQuantityInCartItem = (id, direction, value) => {
+    let newQuantity
+
+    if (direction === "-") {
+      newQuantity = productIdsInCart[id] - 1
+
+      if (newQuantity === 0) {
+        return removeFromCart(id)
+      }
+    } else if (direction === "+") {
+      if (!productIdsInCart[id]) {
+        return addToCart(id)
+      }
+
+      newQuantity = productIdsInCart[id] + 1
+    } else {
+      newQuantity = value || 0
+    }
+
+    const res = changeQuantityOfCartItem(id, newQuantity)
+
+    if (res.success) {
+      setProductIdsInCart(res.items)
+    }
+  }
+
   return {
     productIdsInCart,
     addToCart,
@@ -60,5 +92,6 @@ export default function useCartUtils () {
     setShowCartPopup,
     goToCart,
     clearAllCart,
+    changeQuantityInCartItem,
   }
 }

@@ -9,17 +9,13 @@ export function ProductItem({
   vendor,
   inCart,
   addToCart,
-  removeFromCart,
+  goToCart,
 }) {
   const pathForProductPopup = "#popup_products" + id
   const pathForProduct = "/product/" + id
 
   const handleAddToCart = () => {
     addToCart(id)
-  }
-
-  const handleRemoveFromCart = () => {
-    removeFromCart(id)
   }
 
   return (
@@ -39,7 +35,7 @@ export function ProductItem({
         </div>
         <button
           className={`product_btn btn ${inCart ? "active" : ""}`}
-          onClick={inCart ? handleRemoveFromCart : handleAddToCart}
+          onClick={inCart ? goToCart : handleAddToCart}
         >
           {inCart ? "В корзине" : "Добавить в корзину"}
         </button>
