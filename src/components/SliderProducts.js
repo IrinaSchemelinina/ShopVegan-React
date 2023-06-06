@@ -5,7 +5,7 @@ import ProductPopup from "../components/ProductPopup"
 import { CartContext } from "../context/CartContext"
 
 export default function SliderProducts({ config }) {
-  const { productIdsInCart, addToCart, removeFromCart } = useContext(CartContext)
+  const { productIdsInCart, addToCart, goToCart } = useContext(CartContext)
 
   const settings = {
     arrows: true,
@@ -77,7 +77,7 @@ export default function SliderProducts({ config }) {
               {...item}
               inCart={!!productIdsInCart[item.id]}
               addToCart={addToCart}
-              removeFromCart={removeFromCart}
+              goToCart={goToCart}
             />
           ))}
         </Slider>
@@ -88,7 +88,7 @@ export default function SliderProducts({ config }) {
           {...item}
           inCart={!!productIdsInCart[item.id]}
           addToCart={addToCart}
-          removeFromCart={removeFromCart}
+          goToCart={goToCart}
         />
       ))}
     </Fragment>
